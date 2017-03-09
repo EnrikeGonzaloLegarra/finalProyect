@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
     type: String,
   },
   date: {
-    type: Date,
+    type: String,
   },
   role: {
     type: String,

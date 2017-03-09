@@ -11,10 +11,10 @@ const eventShema = new mongoose.Schema({
     type: String,
   },
   inscribedFinalDate: {
-    type: Date,
+    type: String,
   },
   eventDate: {
-    type: Date,
+    type: String,
   },
   inscribed: {
     type: String,
