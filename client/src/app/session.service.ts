@@ -28,7 +28,7 @@ export class SessionService {
   }
 
   logout() {
-    return this.http.post(BASEURL +`/logout`,{withCredentials:true})
+    return this.http.post(BASEURL +`/logout`,{},{withCredentials:true})
       .map(res => res.json())
       .catch(this.handleError);
   }

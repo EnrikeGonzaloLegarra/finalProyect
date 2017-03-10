@@ -14,6 +14,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { InfoProfileComponent } from './info-profile/info-profile.component';
 import { ListEventComponent } from './list-event/list-event.component';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { ShowEventService } from './show-event.service';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 //Aqui realizamos las rutas virtuales
 const routes: Routes = [
@@ -36,7 +38,8 @@ const routes: Routes = [
     ProfileComponent,
     InfoProfileComponent,
     ListEventComponent,
-    SignInComponent
+    SignInComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,

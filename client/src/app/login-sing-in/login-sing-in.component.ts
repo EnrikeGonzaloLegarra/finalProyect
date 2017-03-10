@@ -1,5 +1,7 @@
 import { Component, OnInit,Input,Output } from '@angular/core';
 import { SessionService } from '../session.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login-sing-in',
@@ -16,7 +18,7 @@ export class LoginSingInComponent implements OnInit {
   privateData: any = '';
 
 
-  constructor(private session: SessionService) { }
+  constructor(private session: SessionService, private router: Router) { }
   ngOnInit() {
     this.session.isLoggedIn()
   .subscribe(
@@ -31,15 +33,15 @@ export class LoginSingInComponent implements OnInit {
       (user) => this.successCb(user),
       (err) => this.errorCb(err)
       );
+
   }
-
-
   logout() {
     this.session.logout()
       .subscribe(
       () => this.successCb(null),
       (err) => this.errorCb(err)
       );
+
   }
 
   getPrivateData() {
@@ -56,10 +58,11 @@ export class LoginSingInComponent implements OnInit {
   }
 
   successCb(user) {
+    this.router.navigate(['/home']);
     this.user = user;
     this.error = null;
   }
   redirectPage(){
-    
+
   }
 }

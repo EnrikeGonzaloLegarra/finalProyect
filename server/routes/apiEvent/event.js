@@ -4,9 +4,9 @@
   const Even = require('../../models/event');
 
   router.get('/events', function(req, res, next) {
-    Even.find().lean().exec(function(err, even) {
+    Even.find().lean().exec(function(err, events) {
       if (err) return next(err);
-      return res.send(JSON.stringify(even));
+      return res.send(JSON.stringify(events));
     });
   });
 

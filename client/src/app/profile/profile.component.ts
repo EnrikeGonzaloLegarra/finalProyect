@@ -21,16 +21,10 @@ export class ProfileComponent implements OnInit {
     this.session.isLoggedIn()
   .subscribe(
     (user) => this.successCb(user),
-  
+
   );
 }
-  //   this.session.isLoggedIn()
-  //       .subscribe(
-  //         (user) => {
-  //         console.log("anthony",user);
-  //       }),
-  //       (err) => console.log("error: ", err);
-  // }
+
   logUser(){
     console.log("logUser",this.user)
   }
