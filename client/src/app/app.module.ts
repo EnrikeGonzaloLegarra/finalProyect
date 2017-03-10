@@ -4,21 +4,26 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { SessionService } from "./session.service";
 import { UserService } from "./user.service";
-
-
 import { AppComponent } from './app.component';
 import { LoginSingInComponent } from './login-sing-in/login-sing-in.component';
 import { RouterModule, Routes  } from "@angular/router";
 import { HeaderComponent } from './header/header.component';
 import { SinglePageComponent } from './single-page/single-page.component';
 import { HomeComponent } from './home/home.component';
+import { ProfileComponent } from './profile/profile.component';
+import { InfoProfileComponent } from './info-profile/info-profile.component';
+import { ListEventComponent } from './list-event/list-event.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 //Aqui realizamos las rutas virtuales
 const routes: Routes = [
   { path: '',  component: SinglePageComponent},
   { path: '', redirectTo: '', pathMatch: 'full'},
-  { path: 'home',  component: HomeComponent},
-  { path: 'signin',  component: LoginSingInComponent}
+  { path: 'home',  component: ProfileComponent},
+  { path: 'login',  component: LoginSingInComponent},
+  { path: 'signup', component: SignInComponent},
+  { path: 'edit-profile', component: ProfileComponent},
+  { path: 'list-event', component: ListEventComponent}
 ];
 
 @NgModule({
@@ -27,7 +32,11 @@ const routes: Routes = [
     LoginSingInComponent,
     HeaderComponent,
     SinglePageComponent,
-    HomeComponent
+    HomeComponent,
+    ProfileComponent,
+    InfoProfileComponent,
+    ListEventComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,

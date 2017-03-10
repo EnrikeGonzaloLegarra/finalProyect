@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input,Output } from '@angular/core';
 import { SessionService } from '../session.service';
 
 @Component({
@@ -19,9 +19,10 @@ export class LoginSingInComponent implements OnInit {
   constructor(private session: SessionService) { }
   ngOnInit() {
     this.session.isLoggedIn()
-      .subscribe(
-      (user) => this.successCb(user)
-      );
+  .subscribe(
+    (user) => this.successCb(user),
+
+  );
   }
 
   login() {
@@ -32,13 +33,6 @@ export class LoginSingInComponent implements OnInit {
       );
   }
 
-  signup() {
-    this.session.signup(this.formInfo)
-      .subscribe(
-      (user) => this.successCb(user),
-      (err) => this.errorCb(err)
-      );
-  }
 
   logout() {
     this.session.logout()
@@ -64,5 +58,8 @@ export class LoginSingInComponent implements OnInit {
   successCb(user) {
     this.user = user;
     this.error = null;
+  }
+  redirectPage(){
+    
   }
 }

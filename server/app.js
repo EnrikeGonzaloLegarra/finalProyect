@@ -19,17 +19,22 @@ require('./config/passport')(passport);
 mongoose.connect('mongodb://localhost/raceapp');
 
 var app = express();
-app.use(cors());
+//FALTA CONFIGURAR EL CORS
+var whitelist = [
+  'http://localhost:4200',
+];
+var corsOptions = {
+  origin: function(origin, callback) {
+    var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+    callback(null, originIsWhitelisted);
+  },
+  credentials: true
+};
+app.use(cors(corsOptions));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
-
-
-app.use(passport.initialize());
-app.use(passport.session());
-
 
 app.use(session({
   secret: "passport-local-strategy",
@@ -51,10 +56,12 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 const index = require('./routes/index');
 
 app.use('/', index);
-
 app.use('/', authController);
 app.use('/apiUser', apiUserController);
 app.use('/apiEvent', apiEventController);

@@ -30,7 +30,6 @@ authController.post("/signup", (req, res, next) => {
       });
       return;
     }
-    console.log("Paso1 ");
     var salt = bcrypt.genSaltSync(bcryptSalt);
     var hashPass = bcrypt.hashSync(password, salt);
 
@@ -38,9 +37,6 @@ authController.post("/signup", (req, res, next) => {
       name,
       password: hashPass
     });
-    console.log("paso2");
-    console.log(newUser);
-
     newUser.save((err) => {
       if (err) {
         console.log(err);
@@ -95,6 +91,7 @@ authController.post("/logout", function(req, res) {
 
 authController.get("/loggedin", function(req, res) {
   if (req.isAuthenticated()) {
+    console.log('ieeeeeee');
     return res.status(200).json(req.user);
   }
 

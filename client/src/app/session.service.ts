@@ -16,32 +16,42 @@ export class SessionService {
   }
 
   signup(user) {
-    return this.http.post(BASEURL +`/signup`, user)
+    return this.http.post(BASEURL +`/signup`, user,{withCredentials:true})
       .map(res => res.json())
       .catch(this.handleError);
   }
 
-  login(user) {
-    return this.http.post(BASEURL +`/login`, user)
+  login(user) {/*user,{withCredentials:true}*/
+    return this.http.post(BASEURL +`/login`, user,{withCredentials:true})
       .map(res => res.json())
       .catch(this.handleError);
   }
 
   logout() {
-    return this.http.post(BASEURL +`/logout`, {})
+    return this.http.post(BASEURL +`/logout`,{withCredentials:true})
       .map(res => res.json())
       .catch(this.handleError);
   }
 
-  isLoggedIn() {
-    return this.http.get(BASEURL +`/loggedin`)
-      .map(res => res.json())
+  isLoggedIn() {/*{withCredentials:true}*/
+  console.log("loged in called")
+    return this.http.get(BASEURL +`/loggedin`,{withCredentials:true})
+      .map(res => {
+        //console.log('service',res.json())
+        return res.json()
+      })
       .catch((err) => this.handleError(err));
   }
 
   getPrivateData() {
-    return this.http.get(BASEURL +`/private`)
+    return this.http.get(BASEURL +`/private`,{withCredentials:true})
       .map(res => res.json())
       .catch(this.handleError);
+  }
+
+  getUser(id){
+    id = String(id);
+    console.log('the ID is: ', `http://localhost:3000/apiUser/user/${id}`);
+    return this.http.get(`http://localhost:3000/apiUser/user/${id}`).map((res) => res.json());
   }
 }
