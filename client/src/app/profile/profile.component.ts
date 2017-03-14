@@ -24,6 +24,7 @@ export class ProfileComponent implements OnInit {
   .subscribe(
     (user) => this.successCb(user),
   );
+  console.log("logUser",this.user)
 }
 
 logout() {

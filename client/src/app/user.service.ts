@@ -5,11 +5,14 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
 
+
+
 const BASEURL ="http://localhost:3000";
 
 @Injectable()
 export class UserService {
-
+  userLogged = new EventEmitter();
+  user: any;
   constructor(private http: Http) { }
 
   saveUserEdit(id,editInfo) {
@@ -18,4 +21,20 @@ export class UserService {
       .map(res => res.json());
     }
 
+  getEmitter(){
+    return this.userLogged;
+  }
+
+  isLoggedIn():boolean{
+    return this.user != undefined ? true : false;
+  }
+
+  getUser(){
+    return this.user;
+  }
+
+  checkLogged(user) {
+    this.user = user;
+    this.userLogged.emit(user);
+  }
 }

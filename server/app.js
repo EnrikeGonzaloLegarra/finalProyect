@@ -15,6 +15,7 @@ const apiUserController = require('./routes/apiUser/user');
 const apiEventController = require('./routes/apiEvent/event');
 const authController = require("./routes/apiUser/auth-controller");
 require('./config/passport')(passport);
+var parse = require('xml2json');
 
 mongoose.connect('mongodb://localhost/raceapp');
 

@@ -17,9 +17,6 @@ export class CreateEventComponent implements OnInit {
 
   constructor(private eventSession: ShowEventService,private session: SessionService, private router: Router) { }
 
-  // uploader: FileUploader = new FileUploader({
-  //     url: `${BASEURL}/home/create-event/`
-  //   });
 
 
   event: any;
@@ -57,7 +54,6 @@ export class CreateEventComponent implements OnInit {
   }
 
 saveEvent(){
-
   // console.log("uyrtfbuttrucuytdhtfh7f8htf8tf",this.formEvent);
   //console.log("uploader",this.uploader);
   this.formEvent.userId=this.user._id;
@@ -66,7 +62,7 @@ saveEvent(){
     .subscribe((event) => this.successCb(this.formEvent), (err) => this.errorCb(err));
 
     //this.uploader.uploadAll();
-    this.router.navigate(['/home/create-event'],);
+    this.router.navigate(['/home/upload-file'],);
 }
   cancel(){
       this.router.navigate(['/home']);

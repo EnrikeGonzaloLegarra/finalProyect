@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response,Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
+//import * as xml2json from 'xml2json';
+import X2JS from 'X2JS';
 
 const BASEURL ="http://localhost:3000";
 
@@ -32,4 +34,17 @@ export class ShowEventService {
     .map(res => res.json())
     .catch(this.handleError);
   }
+
+  printMap(){
+    var headers = new Headers();
+    headers.append('Accept', 'application/xml');
+    return this.http.get(BASEURL + `/uploads/1.gpx`, {
+      headers: headers
+    }).map(res => {
+      var result = res.text();
+      var converted:any = new X2JS().xml2js(result);
+      return converted.gpx.trk.trkseg.trkpt;
+    });
+  }
+
 }

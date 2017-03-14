@@ -37,10 +37,7 @@ const routes: Routes = [
           { path: 'event-info/:id', component : EventInfoComponent},
           { path: 'upload-file', component : UploadGpxfileComponent},
 
-          { path: 'create-event', component : CreateEventComponent,
-                children:[
-                    { path: 'upload-file', component : UploadGpxfileComponent}
-                    ]}
+          { path: 'create-event', component : CreateEventComponent}
         ]}
 ];
 

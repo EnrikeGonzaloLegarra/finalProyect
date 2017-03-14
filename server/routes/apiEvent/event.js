@@ -61,6 +61,34 @@
   // });
 
 
+  router.post('/event/uploadFile', upload.single('file'), function(req, res) {
+    const file = new File({
+      //eventId: req.body.name,
+      //file.filename: "prueba",
+      gpx: `/uploads/${req.file.filename}`,
+      //specs: JSON.parse(req.body.specs) || []
+    });
+
+    file.save((err) => {
+      if (err) {
+        return res.send(err);
+      }
+
+      return res.json({
+        message: 'GPX FILE OK!',
+        file: file
+      });
+    });
+  });
+
+
+
+
+
+
+
+
+
   /*---------DE AQUI PARA ARRIBA FUNCIONA---------------*/
 
   router.get('/edit/:id', function(req, res, next) {
