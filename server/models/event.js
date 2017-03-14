@@ -3,28 +3,35 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const eventShema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true
-  },
-  eventAdress: {
+  gpxFile: {
     type: String,
   },
-  inscribedFinalDate: {
+  eventName: {
+    type: String,
+  },
+  town: {
+    type: String,
+  },
+  club: {
     type: String,
   },
   eventDate: {
     type: String,
   },
-  inscribed: {
+  inscribedFinalDate: {
     type: String,
   },
   eventWeb: {
     type: String
   },
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  },
   gpxFile: {
     type: String
-  }
+
+  },
 });
 
 const Event = mongoose.model('Event', eventShema);

@@ -18,4 +18,31 @@ router.get('/user/:id', function(req, res, next) {
   });
 });
 
+router.post('/user/:id', (req, res, next) => {
+  const id = req.params.id;
+  console.log("body", req.body);
+  const body = req.body;
+  const {
+    name,
+    lastName,
+    email,
+    town,
+    club
+
+  } = body;
+  const criteria = {
+    _id: id
+  };
+  const update = {
+    $set: {
+      name,
+      email
+    }
+  };
+
+  User.updateOne(criteria, update, function(err, user) {
+    if (err) return next(err);
+  });
+});
+
 module.exports = router;

@@ -16,17 +16,34 @@ import { ListEventComponent } from './list-event/list-event.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { ShowEventService } from './show-event.service';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { CreateEventComponent } from './create-event/create-event.component';
+import { EventInfoComponent } from './event-info/event-info.component';
+import { FileSelectDirective } from "ng2-file-upload";
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { UploadGpxfileComponent } from './upload-gpxfile/upload-gpxfile.component';
 
 //Aqui realizamos las rutas virtuales
 const routes: Routes = [
   { path: '',  component: SinglePageComponent},
   { path: '', redirectTo: '', pathMatch: 'full'},
-  { path: 'home',  component: ProfileComponent},
   { path: 'login',  component: LoginSingInComponent},
   { path: 'signup', component: SignInComponent},
-  { path: 'edit-profile', component: ProfileComponent},
-  { path: 'list-event', component: ListEventComponent}
+  { path: 'event-info/:id', component : EventInfoComponent},
+  { path: 'home',  component: ProfileComponent,
+        children: [
+          { path: 'dashboard', component: DashboardComponent },
+          { path: 'edit-profile', component: EditProfileComponent},
+          { path: 'list-events', component: ListEventComponent},
+          { path: 'event-info/:id', component : EventInfoComponent},
+          { path: 'upload-file', component : UploadGpxfileComponent},
+
+          { path: 'create-event', component : CreateEventComponent,
+                children:[
+                    { path: 'upload-file', component : UploadGpxfileComponent}
+                    ]}
+        ]}
 ];
+
 
 @NgModule({
   declarations: [
@@ -39,7 +56,12 @@ const routes: Routes = [
     InfoProfileComponent,
     ListEventComponent,
     SignInComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    CreateEventComponent,
+    EventInfoComponent,
+    FileSelectDirective,
+    DashboardComponent,
+    UploadGpxfileComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +69,7 @@ const routes: Routes = [
     HttpModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [SessionService],
+  providers: [SessionService, ShowEventService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

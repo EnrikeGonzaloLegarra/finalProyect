@@ -1,0 +1,69 @@
+<div class="container create" style="padding-top: 60px;">
+
+  <div class="row">
+    <!-- edit form column -->
+    <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+      <h3>Event info</h3>
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Upload gpx File</label>
+          <div class="col-lg-8">
+              <input type="file" name="gpxFile" ng2FileSelect [uploader]="uploader">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Event name:</label>
+          <div class="col-lg-8">
+            <input class="form-control" value="" name ="eventName" [(ngModel)]="formEvent.eventName" type="text">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Town:</label>
+          <div class="col-lg-8"id="locationField">
+            <input class="form-control" value="" name ="town" [(ngModel)]="formEvent.town" type="text">
+
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Club:</label>
+          <div class="col-lg-8">
+            <input class="form-control" value="" name ="club" [(ngModel)]="formEvent.club" type="text">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Event Date</label>
+          <div class="col-lg-8">
+            <input class="form-control" value="" name ="eventDate" [(ngModel)]="formEvent.eventDate" placeholder="22/06/2017" type="text">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Inscribed Final Date:</label>
+          <div class="col-lg-8">
+            <input class="form-control" value="" name ="inscribedFinalDate" [(ngModel)]="formEvent.inscribedFinalDate" placeholder="22/06/2017" type="text">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Event Web:</label>
+          <div class="col-lg-8">
+            <input class="form-control" value="" name ="eventWeb" [(ngModel)]="formEvent.eventWeb" type="text">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-3 control-label"></label>
+          <div class="col-md-8">
+            <input class="btn btn-primary" value="Save Changes" (click)="saveEvent()" type="button">
+            <span></span>
+            <input class="btn btn-default" value="Cancel" (click)="cancel()" type="reset">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

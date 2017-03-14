@@ -15,8 +15,6 @@ module.exports = function(passport) {
       name
     }, (err, user) => {
 
-      console.log('esto es el fockin User', user);
-      console.log('passwordljsndljasdlj d', user.password);
       if (err) {
         return next(err);
       }

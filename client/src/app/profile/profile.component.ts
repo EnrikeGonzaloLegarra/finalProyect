@@ -1,7 +1,9 @@
 import {  Component, OnInit,Input,Output } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import {UserService} from '../user.service';
 import {SessionService} from '../session.service';
 import {ActivatedRoute} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -15,14 +17,22 @@ export class ProfileComponent implements OnInit {
     //declaramos un objeto entry
   user : any;
 // , private route : ActivatedRoute
-  constructor(private session: SessionService) { }
+  constructor(private session: SessionService, private router: Router) { }
 
   ngOnInit() {
     this.session.isLoggedIn()
   .subscribe(
     (user) => this.successCb(user),
-
   );
+}
+
+logout() {
+  this.session.logout()
+    .subscribe(
+    () => this.successCb(null),
+    (err) => this.errorCb(err)
+    );
+    this.router.navigate(['/']);
 }
 
   logUser(){
@@ -38,9 +48,5 @@ export class ProfileComponent implements OnInit {
       // console.log(user, this.user)
       this.error = null;
     }
-  getUserProfile(){
-    //   console.log(this.user);
-    // //aqui ejecutamos la function con el `obejto` journalService
-    //   return this.session.getUser(this.user).subscribe((user)=>this.user=user);
-    }
+
 }

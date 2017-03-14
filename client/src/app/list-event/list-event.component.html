@@ -1,22 +1,74 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<p *ngFor='let event of events'>
+<!-- <p *ngFor='let event of events'>
   <span>title: {{event.name}}</span><br>
   <span>Date: {{event.eventWeb}}</span>
-</p>
+</p> -->
+
+
+<div class="container events" *ngFor='let event of events'>
+  <div class="row">
+    <div class="col-sm-9 col-sm-offset-1">
+      <div class="col-md-4 col-sm-6 event-Card">
+        <div class="card-container">
+          <div class="card">
+            <div class="front">
+              <div class="cover">
+                <img src= {{event.image2}} />
+              </div>
+              <div class="user">
+                <img class="img-circle" src= {{event.image}} />
+              </div>
+              <div class="content">
+                <div class="main">
+                  <h3 class="name">{{event.name}}</h3>
+                  <p class="profession">{{event.eventAdress}}</p>
+                </div>
+                <div class="footer">
+                  <i class="fa fa-mail-forward"></i> Auto Rotation
+                </div>
+              </div>
+            </div>
+            <!-- end front panel -->
+            <div class="back">
+              <div class="header">
+                <h3 class="motto">{{event.eventAdress}}</h3>
+              </div>
+              <div class="content">
+                <div class="main">
+                  <h3 class="text-center">{{event.name}}</h3>
+                  <p class="text-center">{{event.inscribedFinalDate}}</p>
+
+                  <div class="stats-container">
+                    <div class="stats">
+                      <h4>{{event.km}}</h4>
+                      <p><a [routerLink]="['/home/event-info', event._id]">{{event._id}}</a></p>
+                    </div>
+                    <div class="stats">
+                      <h4>{{event.slope}}</h4>
+                      <p>
+                        Desnivel
+                      </p>
+                    </div>
+                    <div class="stats">
+                      <h4>{{event.inscribed}}</h4>
+                      <p>
+                        Inscribed
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="footer">
+                <div class="social-links text-center">
+                  <a href="http://creative-tim.com" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
+                  <a href="http://creative-tim.com" class="google"><i class="fa fa-google-plus fa-fw"></i></a>
+                  <a href="http://creative-tim.com" class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
+                </div>
+              </div>
+            </div>
+            <!-- end back panel -->
+          </div>
+          <!-- end card -->
+        </div>
+        <!-- end card-container -->
+      </div>

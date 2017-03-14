@@ -12,6 +12,10 @@ export class UserService {
 
   constructor(private http: Http) { }
 
-
+  saveUserEdit(id,editInfo) {
+    console.log();
+    return this.http.post(BASEURL +`/apiUser/user/${id}`,editInfo,{withCredentials:true})
+      .map(res => res.json());
+    }
 
 }

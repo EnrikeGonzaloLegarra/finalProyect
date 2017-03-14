@@ -21,4 +21,15 @@ export class ShowEventService {
       .catch(this.handleError);
   }
 
+  showEvent(id){
+      return this.http.get(BASEURL +`/apiEvent/event/${id}`,{withCredentials:true})
+      .map(res => res.json())
+      .catch(this.handleError);
+  }
+
+  saveOneEvent(event){
+    return this.http.post(BASEURL +`/apiEvent/event/new`,event,{withCredentials:true})
+    .map(res => res.json())
+    .catch(this.handleError);
+  }
 }

@@ -12,7 +12,13 @@ const bcryptSalt = 10;
 authController.post("/signup", (req, res, next) => {
   var name = req.body.name;
   var password = req.body.password;
-
+  var role = req.body.check;
+  if (role) {
+    role = "ADMIN";
+  } else {
+    role = "USER";
+  }
+  //role = role ? "ADMIN" : "USER";
   if (!name || !password) {
     res.status(400).json({
 
@@ -35,7 +41,8 @@ authController.post("/signup", (req, res, next) => {
 
     var newUser = User({
       name,
-      password: hashPass
+      password: hashPass,
+      role
     });
 
     newUser.save((err) => {
@@ -113,5 +120,7 @@ authController.get("/private", (req, res) => {
     message: 'Unauthorized'
   });
 });
+
+
 
 module.exports = authController;
