@@ -45,6 +45,8 @@ export class ShowEventService {
       var converted:any = new X2JS().xml2js(result);
       return converted.gpx.trk.trkseg.trkpt;
     });
+      
+
   }
 
 }

@@ -1,3 +1,4 @@
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN9OdByHcEHDc-fwHvjNsvh6XKKDvrciY" async defer></script>
 <div class="container event-info" *ngIf= "user">
     <div class="row" *ngIf="event">
       <div class="col-md-9">
@@ -13,13 +14,9 @@
       <div class="col-md-5">
           <div>
               <div class="panel panel-default">
-                  <div class="text-center header">Google MAPS</div>
-                  <div class="panel-body text-center">
-                      <h4>{{user._id}}</h4>
-                      <div id="map">
+                  <div class="text-center header"></div>
+                  <div class="panel-body text-center" id="map">
 
-
-                      </div>
                   </div>
               </div>
           </div>
@@ -28,19 +25,7 @@
             <div>
                 <div class="panel panel-default">
                     <div class="text-center header">Google MAPS Api-> slope Box</div>
-                    <div class="panel-body text-center">
-
-
-                          <h4>Address</h4>
-                        <div>
-                        2217 Washington Blvd<br />
-                        Washington DC<br />
-                        #(703) 1234 1234<br />
-                        service@company.com<br />
-                        </div>
-                        <hr />
-
-
+                    <div class="panel-body text-center" id=curve_chart>
                     </div>
                 </div>
             </div>
@@ -48,16 +33,15 @@
         <div class="col-md-5">
             <div>
                 <div class="panel panel-default">
-                    <div class="text-center header"> Event info Box</div>
-                    <div class="panel-body text-center">
 
-                        <h4>Address</h4>
-                        <div>
-                        2217 Washington Blvd<br />
-                        Washington DC<br />
-                        #(703) 1234 1234<br />
-                        service@company.com<br />
-                        </div>
+                    <div class="panel-body text-center">
+                      <h4>{{event.name}}</h4>
+                      <div>
+                      {{event.name}}<br />
+                    {{event.eventAdress}}<br />
+                      {{event.inscribed}}<br />
+                      {{event.eventWeb}}<br />
+                      </div>
 
                     </div>
                 </div>
@@ -80,10 +64,6 @@
             </div>
         </div>
     </div>
-    <div class="panel panel-default">
-        <div class="text-center header">
-        <button type="button" name="button">Inscribirser</button>
-        </div>
-    </div>
+
 
 </div>

@@ -21,6 +21,7 @@ import { EventInfoComponent } from './event-info/event-info.component';
 import { FileSelectDirective } from "ng2-file-upload";
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UploadGpxfileComponent } from './upload-gpxfile/upload-gpxfile.component';
+import { AgmCoreModule } from 'angular2-google-maps/core';
 
 //Aqui realizamos las rutas virtuales
 const routes: Routes = [
@@ -36,7 +37,6 @@ const routes: Routes = [
           { path: 'list-events', component: ListEventComponent},
           { path: 'event-info/:id', component : EventInfoComponent},
           { path: 'upload-file', component : UploadGpxfileComponent},
-
           { path: 'create-event', component : CreateEventComponent}
         ]}
 ];
@@ -64,7 +64,8 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    AgmCoreModule.forRoot({apiKey: 'AIzaSyAN9OdByHcEHDc-fwHvjNsvh6XKKDvrciY'})
   ],
   providers: [SessionService, ShowEventService,UserService],
   bootstrap: [AppComponent]

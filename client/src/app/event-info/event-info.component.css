@@ -1,3 +1,15 @@
 .event-info{
     padding-top: 6%;
 }
+sebm-google-map{
+  height: 250px;
+  width: 430px;
+}
+#curve_chart{
+  height: 260px;
+  width: 430px;
+}
+#map{
+  height: 250px;
+  width: 430px;
+}

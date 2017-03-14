@@ -3,6 +3,7 @@ import { ShowEventService } from '../show-event.service';
 import { ActivatedRoute } from '@angular/router';
 import { SessionService } from "../session.service";
 import { UserService }from "../user.service";
+//var GoogleMapsLoader = require ('google-maps');
 
 @Component({
   selector: 'app-event-info',
@@ -23,7 +24,14 @@ error: string;
   .subscribe(
     (user) => this.successCb(user),
     (err)=> console.log("error: isLoggedIn failed")
+
   );
+
+  // GoogleMapsLoader.load(function(google) {
+  //   new google.maps.Map(el, options);
+  //   });
+
+
 
     this.route.params.subscribe((params)=>this.eventId = params['id']);
     //aqui le pasamos el objeto entry y ejecutamos la funcion getOneEntry
@@ -34,6 +42,27 @@ error: string;
   }
   getOneEvent(){
     return this.eventService.showEvent(this.eventId).subscribe((event)=>this.event=event);
+  }
+  map(){
+    this.eventService.printMap().subscribe((result)=>(
+    console.log(result)
+    ));
+    //this.printTrack(result);
+
+    // result.forEach(result, function() {
+    //   var lat = this.res._lat;
+    //   var lon = this.res._lon;
+    //   console.log(lat,lon);
+    // });
+	  //var bounds = new google.maps.LatLngBounds ();
+  }
+  printTrack(result){
+    result.forEach(result, function() {
+       var lat = this.res._lat;
+       var lon = this.res._lon;
+       console.log(lat,lon);
+     });
+
   }
 
   errorCb(err) {
