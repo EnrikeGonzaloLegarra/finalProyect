@@ -23,6 +23,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { UploadGpxfileComponent } from './upload-gpxfile/upload-gpxfile.component';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 
+import { GoogleChartComponent } from './google-chart/google-chart.component';
+
 //Aqui realizamos las rutas virtuales
 const routes: Routes = [
   { path: '',  component: SinglePageComponent},
@@ -58,7 +60,8 @@ const routes: Routes = [
     EventInfoComponent,
     FileSelectDirective,
     DashboardComponent,
-    UploadGpxfileComponent
+    UploadGpxfileComponent,
+    GoogleChartComponent
   ],
   imports: [
     BrowserModule,

@@ -20,6 +20,7 @@ export class ListEventComponent implements OnInit {
   listEvent(){
     this.eventSession.showEvents().subscribe((events)=>this.events=events);
   }
+  
   map(){
     this.eventSession.printMap().subscribe((res)=>(
       console.log(res)

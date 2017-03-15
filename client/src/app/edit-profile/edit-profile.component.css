@@ -1,8 +1,15 @@
 .edit{
   padding-top: 6%;
-  background-color: #6B818C;
-text-align: center;
+  background-color: #ECF0F1;
+  text-align: center;
+  padding-top:10%;
+  padding-bottom: 14%;
+  margin-right:0%;
 
+
+}
+.edit button{
+  margin-bottom: 5%;
 }
 legend{
   padding-top: 1%;

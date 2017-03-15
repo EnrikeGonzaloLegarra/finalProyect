@@ -1,12 +1,37 @@
 .profile{
   padding-top: 6%;
-  background-color: #EEEEEE;
+  background-color:#0D7377;
+  width:16%;
+  height: 100%;
+  position:fixed;
+  border-style: none;
+  color:white;
+}
+.profile img{
+  border-radius: 20%
+}
+.profile a{
+color:white;
+}
+.panel-body{
+    border-style: none;
+    text-align:center;
+
+}
+.panel-default{
+  background-color: #0D7377;
+    border-style: none;
+}
+.media{
+background-color: #0D7377;
 
 }
 .media-body{
-  text-align: center;
+background-color: #0D7377;
+
   line-height:0.5em;
 }
 .btn , .btn-link{
 line-height:0.5em;
+
 }

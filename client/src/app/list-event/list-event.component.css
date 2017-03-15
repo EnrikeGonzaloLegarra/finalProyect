@@ -1,8 +1,11 @@
 body{
-background-color: #393E46;
+background-color: #ECF0F1;
 }
+.events{
+
+  }
 .event-Card{
-  float:right;
+
 }
 
 .btn:hover,
@@ -89,9 +92,10 @@ background-color: #393E46;
     color: #444444;
 }
 .card-container, .front, .back {
-	width: 95%;
-	height: 420px;
+	width: 85%;
+	height: 220px;
 	border-radius: 5px;
+  background-color:#0D7377;
 }
 .card .cover{
     height: 105px;

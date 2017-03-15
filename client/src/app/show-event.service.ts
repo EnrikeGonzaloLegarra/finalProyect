@@ -44,8 +44,12 @@ export class ShowEventService {
       var result = res.text();
       var converted:any = new X2JS().xml2js(result);
       return converted.gpx.trk.trkseg.trkpt;
+    }).map((objects) => {
+        return objects.map((o) => {
+          return {lat:parseFloat(o._lat), lng:parseFloat(o._lon)};
+        })
     });
-      
+
 
   }
 
