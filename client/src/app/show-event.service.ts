@@ -49,8 +49,36 @@ export class ShowEventService {
           return {lat:parseFloat(o._lat), lng:parseFloat(o._lon)};
         })
     });
-
-
   }
+
+  printChart(){
+    var headers = new Headers();
+    headers.append('Accept', 'application/xml');
+    return this.http.get(BASEURL + `/uploads/1.gpx`, {
+      headers: headers
+    }).map(res => {
+      var result = res.text();
+      var converted:any = new X2JS().xml2js(result);
+      return converted.gpx.trk.trkseg.trkpt;
+    }).map((objects) => {
+        return objects.map((o) => {
+          return {ele:parseFloat(o.ele)};
+        })
+    });
+  }
+
+//Calcula distancia entre puntos gpx y saca la distancia entre puntos
+calculateTrackPointDistance(lat1,lon1,lat2,lon2){
+  var R = 6371;
+  var dLat = (lat2-lat1) * (Math.PI/180);
+  var dLon = (lon2-lon1) * (Math.PI/180);
+  var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(lat1 * (Math.PI/180)) * Math.cos(lat2 * (Math.PI/180)) * Math.sin(dLon/2) * Math.sin(dLon/2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  var d = R * c;
+
+  return d;
+}
+
+
 
 }
