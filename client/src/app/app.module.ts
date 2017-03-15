@@ -22,6 +22,7 @@ import { FileSelectDirective } from "ng2-file-upload";
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UploadGpxfileComponent } from './upload-gpxfile/upload-gpxfile.component';
 import { AgmCoreModule } from 'angular2-google-maps/core';
+import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 
 import { GoogleChartComponent } from './google-chart/google-chart.component';
 
@@ -62,13 +63,15 @@ const routes: Routes = [
     DashboardComponent,
     UploadGpxfileComponent,
     GoogleChartComponent
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(routes),
-    AgmCoreModule.forRoot({apiKey: 'AIzaSyAN9OdByHcEHDc-fwHvjNsvh6XKKDvrciY'})
+    AgmCoreModule.forRoot({apiKey: 'AIzaSyAN9OdByHcEHDc-fwHvjNsvh6XKKDvrciY'}),
+    Ng2GoogleChartsModule
   ],
   providers: [SessionService, ShowEventService,UserService],
   bootstrap: [AppComponent]

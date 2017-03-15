@@ -2,22 +2,21 @@
 
     padding-left:20%;
 }
-sebm-google-map{
-  height: 250px;
-  width: 430px;
-}
+
 #curve_chart{
   height: 260px;
   width: 430px;
 }
 #map{
-  height: 300px;
+  height: 350px;
   width: 430px;
 }
-#pie_chart{
-  height: 250px;
-  width: 430px;
-}
+
 .slope{
-  right: 20%;
+  margin-left: 20%;
+
+}
+#chart_div{
+  width: 100px;
+  height: 350px;
 }

@@ -3,6 +3,7 @@ import { ShowEventService } from '../show-event.service';
 import { ActivatedRoute } from '@angular/router';
 import { SessionService } from "../session.service";
 import { UserService } from "../user.service";
+import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 
 declare function require(name: String);
 var GoogleMapsLoader = require('google-maps');
@@ -18,10 +19,19 @@ export class EventInfoComponent implements OnInit {
     eventId: string;
     event: Object;
     user: any;
-    /*------------------------PRUEBA GOOGLE CHART -----------------------*/
+    public lineChartOptions:any =  {
+      chartType: 'LineChart',
+      dataTable: [
+        ['Task', 'Hours per Day'],
+        ['Work',     11],
+        ['Eat',      2],
+        ['Commute',  2],
+        ['Watch TV', 2],
+        ['Sleep',    7]
+      ],
+      options: {'title': 'M'},
+    };
 
-
-    /*------------------------FIN PRUEBA GOOGLE CHART -----------------------*/
     constructor(private eventService: ShowEventService, private session: SessionService, private userSession: UserService, private route: ActivatedRoute) { }
 
     ngOnInit() {
@@ -32,6 +42,11 @@ export class EventInfoComponent implements OnInit {
             (err) => console.log("error: isLoggedIn failed")
 
             );
+            /**********-----------CHART-------************+********/
+
+
+
+            /****************************+***/
 
 
 
@@ -72,23 +87,12 @@ export class EventInfoComponent implements OnInit {
         });
 
         this.route.params.subscribe((params) => this.eventId = params['id']);
-
         this.event = this.getOneEvent();
-
         console.log("ususususususu", this.userSession.getUser())
     }
 
     getOneEvent() {
         return this.eventService.showEvent(this.eventId).subscribe((event) => this.event = event);
-    }
-
-    printTrack(result) {
-        result.forEach(result, function() {
-            var lat = this.res._lat;
-            var lon = this.res._lon;
-            console.log(lat, lon);
-        });
-
     }
 
     errorCb(err) {

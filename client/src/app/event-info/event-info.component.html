@@ -1,3 +1,4 @@
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN9OdByHcEHDc-fwHvjNsvh6XKKDvrciY" async defer></script>
 <div class="container event-info" *ngIf= "user">
@@ -22,13 +23,12 @@
               </div>
           </div>
       </div>
-        <div class="col-md-4">
+        <div class="col-md-7">
             <div>
-                <div class="panel panel-default">
-                    <div class="text-center header slope">Google MAPS Api-> slope Box</div>
-                    <div class="panel-body text-center" id=curve_chart>
-                      <div id="pie_chart" [chartData]="pie_ChartData" [chartOptions] = "pie_ChartOptions" chartType="PieChart" GoogleChart></div>
-                    </div>
+                <div class="panel panel-default slope">
+                    <div class="panel-body text-center">
+                    <google-chart [data]="lineChartOptions"></google-chart>
+                </div>
                 </div>
             </div>
         </div>
