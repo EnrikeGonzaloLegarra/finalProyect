@@ -9,8 +9,7 @@ module.exports = function(passport) {
     usernameField: "name",
     passwordField: "password"
   }, (name, password, next) => {
-    console.log("esto es el fockin username", name);
-    console.log(password);
+
     User.findOne({
       name
     }, (err, user) => {

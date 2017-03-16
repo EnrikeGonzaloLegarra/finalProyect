@@ -1,11 +1,12 @@
 body{
 background-color: #ECF0F1;
 }
-.events{
+.cards{
+  padding-top: 7%;
+}
 
-  }
-.event-Card{
-
+.event-name{
+padding-bottom: 1%;
 }
 
 .btn:hover,

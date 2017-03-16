@@ -5,52 +5,48 @@
 
 
 
-          <div class="col-md-9 col-sm-offset-3" *ngFor='let event of events'>
-                <div class="card-container">
-                    <div class="card">
-                        <div class="front">
-                            <div class="cover">
+<div class="col-md-9 col-sm-offset-3 cards" *ngFor='let event of events'>
+  <div class="card-container">
+    <div class="card">
+      <div class="front">
+        <div class="cover">
+          <img src="https://www.todomountainbike.net/images/articles/2016/orbea-gran-fondo-vitoria-gasteiz-2016_228.jpg" />
+        </div>
+        <div class="user">
+          <img class="img-circle" src="https://s1.wklcdn.com/image_31/950483/11946261/7312510.jpg" />
+        </div>
+        <div class="content">
+          <h4 class="text-center event-name">{{event.name}}</h4>
+        </div>
+      </div>
+      <!-- end
+      <!-- end front panel -->
+      <div class="back">
+        <div class="header">
+          <h3 class="text-center"><a [routerLink]="['/home/event-info', event._id]">{{event.name}}</a></h3>
+        </div>
+        <div class="content">
+          <div class="main">
+            <h3 class="text-center">{{event.town}}</h3>
+            <p class="text-center">{{event.inscribedFinalDate}}</p>
 
+            <div class="stats-container">
+              <div class="stats">
 
-                         </div>
-                            <div class="user">
-                            </div>
+              </div>
+              <div class="stats">
 
-                        </div>
-                        <!-- end front panel -->
-                        <div class="back">
-                            <div class="header">
-                                <h3 class="motto">{{event.eventAdress}}</h3>
-                            </div>
-                            <div class="content">
-                                <div class="main">
-                                    <h3 class="text-center">{{event.name}}</h3>
-                                    <p class="text-center">{{event.inscribedFinalDate}}</p>
+              </div>
+              <div class="stats">
 
-                                    <div class="stats-container">
-                                        <div class="stats">
-                                            <h4>{{event.km}}</h4>
-                                            <p><a [routerLink]="['/home/event-info', event._id]">{{event._id}}</a></p>
-                                        </div>
-                                        <div class="stats">
-                                            <h4>{{event.slope}}</h4>
-                                            <p>
-                                                Desnivel
-                                            </p>
-                                        </div>
-                                        <div class="stats">
-                                            <h4>{{event.inscribed}}</h4>
-                                            <p>
-                                                Inscribed
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end back panel -->
-                    </div>
-                    <!-- end card -->
-                </div>
+              </div>
             </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- end back panel -->
+    </div>
+    <!-- end card -->
+  </div>
+</div>

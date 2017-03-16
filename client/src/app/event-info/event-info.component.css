@@ -1,22 +1,35 @@
-.event-info{
-
-    padding-left:20%;
+.event{
+  padding-top: 9%;
 }
 
+.event-info{
+    padding-left:20%;
+}
+.race-event{
+  background-color: #81d0d3;
+
+}
+.inscribed{
+  background-color: #81d0d3;
+
+}
 #curve_chart{
   height: 260px;
   width: 430px;
 }
 #map{
   height: 350px;
-  width: 430px;
+  width: 587px;
 }
 
-.slope{
-  margin-left: 20%;
+.chart{
+height: 10px;
+background-color:#ECF0F1;
+border-style: none;
+
 
 }
 #chart_div{
-  width: 100px;
+  width: 200px;
   height: 350px;
 }
