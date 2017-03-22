@@ -1,6 +1,6 @@
-import {  Component, OnInit,Input,Output } from '@angular/core';
-import {SessionService} from '../session.service';
-import {ActivatedRoute} from '@angular/router';
+import { Component, OnInit,Input,Output } from '@angular/core';
+import { SessionService } from '../session.service';
+import { Router } from '@angular/router';
 import { UserService } from "../user.service";
 
 @Component({
@@ -15,23 +15,25 @@ export class EditProfileComponent implements OnInit {
   user : any;
   editInfo = {
     name: '',
-    email: ''
+    lastName:'',
+    email: '',
+    town:'',
+    age:'',
+    club:'',
+    date:''
   };
 // , private route : ActivatedRoute
-  constructor(private session: SessionService, private userService: UserService, private route : ActivatedRoute) { }
+  constructor(private session: SessionService, private userService: UserService, private router : Router) { }
 
   ngOnInit() {
     this.session.isLoggedIn()
   .subscribe(
     (user) => this.successCb(user),
   );
-  //this.route.params.subscribe((params)=>this.userId = params['id']);
-  //aqui le pasamos el objeto entry y ejecutamos la funcion getOneEntry
-  //this.user = this.saveUser();
   }
 
   saveUser(){
-    console.log("userID",this.editInfo)
+
     return this.userService.saveUserEdit(this.user._id,this.editInfo).subscribe((user)=>this.user=user);
 
   }
@@ -42,8 +44,8 @@ export class EditProfileComponent implements OnInit {
     }
 
     successCb(user) {
+        this.router.navigate(['/home/dashboard']);
       this.user = user;
-      // console.log(user, this.user)
       this.error = null;
     }
 

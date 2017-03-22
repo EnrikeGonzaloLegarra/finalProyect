@@ -15,17 +15,13 @@ export class ListEventComponent implements OnInit {
 
   ngOnInit() {
     this.listEvent();
-    this.map();
+    
   }
   listEvent(){
     this.eventSession.showEvents().subscribe((events)=>this.events=events);
   }
-  
-  map(){
-    this.eventSession.printMap().subscribe((res)=>(
-      console.log(res)
-    ));
-  }
+
+
 
 
 }

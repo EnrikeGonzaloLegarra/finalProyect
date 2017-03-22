@@ -22,74 +22,15 @@
 
   router.post('/event/new', upload.single('gpxFile'), function(req, res, next) {
     const body = req.body;
-    //console.log(req.file.filename);
-
-    //const gpxFile = `/uploads/${req.gpxFile.filename}`;
-
-    //body.gpxFile = gpxFile;
-
     const even = new Even(body);
     even.save(function(err, doc) {
       if (err) {
-        console.log(err);
         return next(err);
       }
-      console.log("back event", doc);
       res.status(202).json(even);
 
     });
   });
-
-  // router.post('/event/upload', upload.single('file'), function(req, res) {
-  //   const file = new File({
-  //     name: req.body.name,
-  //     brand: req.body.brand,
-  //     image: `/uploads/${req.file.filename}`,
-  //     specs: JSON.parse(req.body.specs) || []
-  //   });
-  //
-  //   file.save((err) => {
-  //     if (err) {
-  //       return res.send(err);
-  //     }
-  //
-  //     return res.json({
-  //       message: 'New Phone created!',
-  //       file: file
-  //     });
-  //   });
-  // });
-
-
-  router.post('/event/uploadFile', upload.single('file'), function(req, res) {
-    const file = new File({
-      //eventId: req.body.name,
-      //file.filename: "prueba",
-      gpx: `/uploads/${req.file.filename}`,
-      //specs: JSON.parse(req.body.specs) || []
-    });
-
-    file.save((err) => {
-      if (err) {
-        return res.send(err);
-      }
-
-      return res.json({
-        message: 'GPX FILE OK!',
-        file: file
-      });
-    });
-  });
-
-
-
-
-
-
-
-
-
-  /*---------DE AQUI PARA ARRIBA FUNCIONA---------------*/
 
   router.get('/edit/:id', function(req, res, next) {
     const id = req.params.id;
@@ -105,12 +46,13 @@
     const id = req.params.id;
     const body = req.body;
     const {
-      gpxFile,
-      eventFile,
+      name,
+      lastName,
+      email,
       town,
+      age,
       club,
-      eventDate,
-      inscribedFinalDate
+      date
     } = body;
 
     const criteria = {
@@ -118,13 +60,13 @@
     };
     const update = {
       $set: {
-        gpxFile,
-        eventFile,
+        name,
+        lastName,
+        email,
         town,
+        age,
         club,
-        eventDate,
-        inscribedFinalDate,
-        eventWeb
+        date
       }
     };
 
@@ -133,11 +75,6 @@
       return res.send(JSON.stringify(even));
     });
   });
-  /*--------------------De aqui para arriba funciona----------*/
-
-
-
-
 
 
   module.exports = router;

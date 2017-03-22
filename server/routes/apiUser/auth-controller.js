@@ -47,9 +47,7 @@ authController.post("/signup", (req, res, next) => {
 
     newUser.save((err) => {
       if (err) {
-        console.log(err);
         res.status(400).json({
-
           message: "Something went wrong primer error"
         });
       } else {
@@ -69,13 +67,10 @@ authController.post("/signup", (req, res, next) => {
 authController.post("/login", function(req, res, next) {
   passport.authenticate('local', function(err, user, info) {
     if (err) {
-      console.log(err);
       return next(err);
     }
 
     if (!user) {
-      console.log('Condicion !User');
-      console.log(user);
       return res.status(401).json(info);
     }
 
@@ -99,7 +94,6 @@ authController.post("/logout", function(req, res) {
 
 authController.get("/loggedin", function(req, res) {
   if (req.isAuthenticated()) {
-    console.log('ieeeeeee');
     return res.status(200).json(req.user);
   }
 

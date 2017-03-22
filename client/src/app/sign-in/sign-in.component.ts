@@ -15,7 +15,7 @@ export class SignInComponent implements OnInit {
     check:''
   };
   error: string;
-  privateData: any = '';
+
 
 
   constructor(private session: SessionService, private router: Router) { }
@@ -28,7 +28,6 @@ export class SignInComponent implements OnInit {
   }
 
   signup() {
-    console.log(this.formInfo);
     this.session.signup(this.formInfo)
       .subscribe((user) => this.successCb(user),(err) => this.errorCb(err));
   }

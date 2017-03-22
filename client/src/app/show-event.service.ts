@@ -3,7 +3,7 @@ import { Http, Response,Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
-//import * as xml2json from 'xml2json';
+
 import X2JS from 'X2JS';
 
 const BASEURL ="http://localhost:3000";
@@ -30,15 +30,16 @@ export class ShowEventService {
   }
 
   saveOneEvent(event){
-    return this.http.post(BASEURL +`/apiEvent/event/new`,event,{withCredentials:true})
+    return this.http.post(BASEURL +`/apifile/create`,event,{withCredentials:true})
     .map(res => res.json())
     .catch(this.handleError);
   }
 
-  printMap(){
+
+  printMap(gpxFile){
     var headers = new Headers();
     headers.append('Accept', 'application/xml');
-    return this.http.get(BASEURL + `/uploads/1.gpx`, {
+    return this.http.get(BASEURL + `/uploads/`+ gpxFile, {
       headers: headers
     }).map(res => {
       var result = res.text();
@@ -51,10 +52,11 @@ export class ShowEventService {
     });
   }
 
+
   printChart(){
     var headers = new Headers();
     headers.append('Accept', 'application/xml');
-    return this.http.get(BASEURL + `/uploads/1.gpx`, {
+    return this.http.get(BASEURL + `/uploads/1489706356589.gpx`, {
       headers: headers
     }).map(res => {
       var result = res.text();

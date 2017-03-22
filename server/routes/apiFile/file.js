@@ -1,21 +1,22 @@
-const upload = require('../../configs/multer');
+const upload = require('../../config/multer');
+const express = require('express');
+const router = express.Router();
+const Event = require('../../models/event');
 
+router.post('/create', upload.single('file'), function(req, res) {
+  const body = req.body;
+  body.gpxFile = req.file.filename;
 
-router.post('/event/create-event', upload.single('file'), function(req, res) {
-  const file = new File({
-    eventId: req.body.name,
-    gpx: `/uploads/${req.file.filename}`,
-    specs: JSON.parse(req.body.specs) || []
-  });
-
-  file.save((err) => {
+  const event = new Event(body);
+  event.save(function(err, doc) {
     if (err) {
-      return res.send(err);
+      return next(err);
     }
 
-    return res.json({
-      message: 'GPX FILE OK!',
-      file: file
-    });
+  });
+  return res.status(200).json({
+    message: "File was uploaded"
   });
 });
+
+module.exports = router;

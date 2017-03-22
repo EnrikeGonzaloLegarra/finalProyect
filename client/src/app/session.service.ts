@@ -9,8 +9,7 @@ const BASEURL ="http://localhost:3000";
 @Injectable()
 export class SessionService {
 
-  //emitter:EventEmitter<Object> = new EventEmiite<Object>();
-
+  
   constructor(private http: Http) { }
 
   handleError(e) {
@@ -39,17 +38,14 @@ export class SessionService {
 
   }
 
-  isLoggedIn() {/*{withCredentials:true}*/
-  console.log("loged in called")
+  isLoggedIn() {
     return this.http.get(BASEURL +`/loggedin`,{withCredentials:true})
       .map(res => {
         return res.json()
       })
       .catch((err) => this.handleError(err));
   }
-  getUser(){
-    
-  }
+
 
   getPrivateData() {
     return this.http.get(BASEURL +`/private`,{withCredentials:true})

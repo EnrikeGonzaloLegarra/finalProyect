@@ -42,31 +42,27 @@ export class EventInfoComponent implements OnInit {
     },
 
   };
-  /*options: {
-       animation: {easing: 'out'},
-       width: 150, height: 150,
-       greenFrom: 1, greenTo: 4,
-       minorTicks: 5,
-       min: 0, max: 5,
-       majorTicks: ['0', '1', '2', '3', '4', '5'],
-       greenColor: '#d0e9c6'
-     }*/
+
 
   constructor(private eventService: ShowEventService, private session: SessionService, private userSession: UserService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.params.subscribe((params) => this.eventId = params['id']);
 
     this.session.isLoggedIn()
       .subscribe(
-      (user) => this.successCb(user),
-      (err) => console.log("error: isLoggedIn failed")
-      );
+      (user) => this.successCb(user));
+
+    this.getElevation();
+    this.getOneEvent();
 
     GoogleMapsLoader.KEY = "AIzaSyAN9OdByHcEHDc-fwHvjNsvh6XKKDvrciY";
     GoogleMapsLoader.LIBRARIES = ['geometry', 'places'];
 
     const instance = this;
     GoogleMapsLoader.load(function(google) {
+
+
       const map = new google.maps.Map(document.getElementById('map'), {
         zoom: 13,
         center: location,
@@ -77,13 +73,13 @@ export class EventInfoComponent implements OnInit {
         mapTypeId: 'terrain'
       });
       var styles = [
-      {
+        {
           featureType: "all",
           stylers: [
             { saturation: -80 }
           ]
         },
-         {
+        {
           featureType: "road.arterial",
           elementType: "geometry",
           stylers: [
@@ -100,7 +96,7 @@ export class EventInfoComponent implements OnInit {
       ];
       map.setOptions({ styles: styles });
 
-      instance.eventService.printMap()
+      instance.eventService.printMap(instance.event["gpxFile"])
         .subscribe((gpxTrack) => {
           var bounds = new google.maps.LatLngBounds();
           gpxTrack.map((p) => bounds.extend(p));
@@ -118,15 +114,9 @@ export class EventInfoComponent implements OnInit {
 
     });
 
-    this.getElevation();
-    this.route.params.subscribe((params) => this.eventId = params['id']);
-    this.event = this.getOneEvent();
-
-
   }/*------------end NgOnInit-----------*/
 
   getElevation() {
-
     this.eventService.printChart()
       .subscribe((elevation) => {
         for (var i = 0; i < elevation.length; i++) {
@@ -146,7 +136,6 @@ export class EventInfoComponent implements OnInit {
 
   successCb(user) {
     this.user = user;
-    console.log(user._id)
     this.error = null;
   }
 
@@ -169,8 +158,10 @@ export class EventInfoComponent implements OnInit {
       distanceArray.push(distance);
     }
     this.km = distanceArray[distanceArray.length - 1].toFixed();
-
     return distanceArray[distanceArray.length - 1];
   }
+
+
+
 
 }

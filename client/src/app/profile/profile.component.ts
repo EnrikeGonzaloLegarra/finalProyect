@@ -14,9 +14,8 @@ import { Router } from '@angular/router';
 export class ProfileComponent implements OnInit {
   userId: any;
   error: string;
-    //declaramos un objeto entry
   user : any;
-// , private route : ActivatedRoute
+
   constructor(private session: SessionService, private router: Router) { }
 
   ngOnInit() {
@@ -24,7 +23,7 @@ export class ProfileComponent implements OnInit {
   .subscribe(
     (user) => this.successCb(user),
   );
-  console.log("logUser",this.user)
+
 }
 
 logout() {
@@ -36,9 +35,7 @@ logout() {
     this.router.navigate(['/']);
 }
 
-  logUser(){
-    console.log("logUser",this.user)
-  }
+
   errorCb(err) {
       this.error = err;
       this.user = null;
@@ -46,7 +43,6 @@ logout() {
 
     successCb(user) {
       this.user = user;
-      // console.log(user, this.user)
       this.error = null;
     }
 

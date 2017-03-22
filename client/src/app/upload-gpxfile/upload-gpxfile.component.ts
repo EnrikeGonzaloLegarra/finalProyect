@@ -12,12 +12,11 @@ import { FileSelectDirective,FileUploader } from "ng2-file-upload";
 export class UploadGpxfileComponent implements OnInit {
 
   uploader: FileUploader = new FileUploader({
-   url: `/home/upload-file`
+   url: `/home/create-event`
  });
-
  newFile = {
    name: '',
-   specs: []
+   eventId:''
  };
 
  feedback: string;
@@ -35,15 +34,11 @@ export class UploadGpxfileComponent implements OnInit {
    };
 
   }
-  addSpec(spec) {
-   this.newFile.specs.push(spec);
- }
 
  submit() {
    this.uploader.onBuildItemForm = (item, form) => {
      form.append('name', this.newFile.name);
-    
-     form.append('specs', JSON.stringify(this.newFile.specs));
+
    };
 
    this.uploader.uploadAll();

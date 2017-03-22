@@ -3,9 +3,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const eventShema = new mongoose.Schema({
-  gpxFile: {
-    type: String,
-  },
   eventName: {
     type: String,
   },

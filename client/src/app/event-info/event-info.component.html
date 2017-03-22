@@ -2,7 +2,7 @@
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN9OdByHcEHDc-fwHvjNsvh6XKKDvrciY" async defer></script>
 <div class="container event-info" *ngIf= "user">
-    <div class="row event" *ngIf="event" >
+    <div class="row event" *ngIf="event">
 
       <div class="col-md-8">
           <div>
@@ -13,49 +13,58 @@
               </div>
           </div>
       </div>
-
-      <div class="col-md-4">
-          <div>
-              <div class="panel panel-default race-event">
-                  <div class="panel-body text-center">
-                    <h4>{{event.name}}</h4>
-                    <div>
-                    {{event.name}}<br />
-                  {{event.eventAdress}}<br />
-                    {{event.inscribed}}<br />
-                    {{km}} KM<br />
-                    </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-        <div class="col-md-4">
-            <div>
-                <div class="panel panel-default inscribed">
-                    <div class="text-center header">List inscribed user</div>
-                    <div class="panel-body text-center">
-                        <h4>Address</h4>
-                    </div>
-                    <div class="text-center header">LETS GO</div>
-                    <div class="panel-body text-center">
-                        <button type="button" name="button" clas="btn btn-primary">Register</button>
-                        <label></label>
+            <div class="col-md-4 putRigth">
+                <div>
+                    <div class="panel panel-default race-event">
+                        <div class="panel-body text-center">
+                          <h4>{{event.eventName}}</h4>
+                          <div>
+                          {{event.eventName}}<br />
+                          {{event.town}}<br />
+                          {{event.eventWeb}}<br />
+                          {{km}} KM<br />
+                          </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="row">
+              <div class="col-md-4 putRigth">
+                  <div>
+                      <div class="panel panel-default inscribed">
+                          <div class="text-center header-parti">INSCRIBED</div>
+
+                          <div class="text-center header participantes">389</div>
+                          <div class="panel-body text-center">
+                              <button type="button" name="button" class="btn-default btn btn-submit boton">Register</button>
+                              <label></label>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+
+
+
+
+      <div class="row">
+        <div class="col-md-12">
+            <div>
+                <div class="panel panel-default slope">
+                    <div class="panel-body text-center" class="chart">
+                    <google-chart [data]="lineChartOptions"></google-chart>
+                </div>
+                </div>
+            </div>
         </div>
+
+      </div>
+
+
+
+
+
+
     </div>
 
-<div class="row" >
-    <div class="col-md-12">
-        <div>
-            <div class="panel panel-default slope">
-                <div class="panel-body text-center" class="chart">
-                <google-chart [data]="lineChartOptions"></google-chart>
-            </div>
-            </div>
-        </div>
-    </div>
-
-</div>
 </div>

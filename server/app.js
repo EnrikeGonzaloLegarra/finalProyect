@@ -13,6 +13,7 @@ const session = require("express-session");
 const passport = require("passport");
 const apiUserController = require('./routes/apiUser/user');
 const apiEventController = require('./routes/apiEvent/event');
+const apiFileController = require('./routes/apiFile/file');
 const authController = require("./routes/apiUser/auth-controller");
 require('./config/passport')(passport);
 var parse = require('xml2json');
@@ -24,6 +25,7 @@ var app = express();
 var whitelist = [
   'http://localhost:4200',
 ];
+//a Connect/Express middleware 
 var corsOptions = {
   origin: function(origin, callback) {
     var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
@@ -66,6 +68,7 @@ app.use('/', index);
 app.use('/', authController);
 app.use('/apiUser', apiUserController);
 app.use('/apiEvent', apiEventController);
+app.use('/apifile', apiFileController);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

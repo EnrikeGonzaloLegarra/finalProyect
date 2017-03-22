@@ -20,7 +20,6 @@ router.get('/user/:id', function(req, res, next) {
 
 router.post('/user/:id', (req, res, next) => {
   const id = req.params.id;
-  console.log("body", req.body);
   const body = req.body;
   const {
     name,
@@ -36,7 +35,10 @@ router.post('/user/:id', (req, res, next) => {
   const update = {
     $set: {
       name,
-      email
+      lastName,
+      email,
+      town,
+      club
     }
   };
 

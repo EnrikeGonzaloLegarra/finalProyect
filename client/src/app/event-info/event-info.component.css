@@ -3,15 +3,30 @@
 }
 
 .event-info{
-    padding-left:20%;
+    padding-left:15%;
 }
 .race-event{
-  background-color: #81d0d3;
+  background-color: #0D7377;
+  color:white;
+}
+.putRigth{
 
 }
+.boton{
+  color:red;
+}
 .inscribed{
-  background-color: #81d0d3;
-
+  background-color: #0D7377;
+  color:white;
+}
+.inscribed .boton{
+  color:#0D7377;
+}
+.participantes{
+  font-size: 3em;
+}
+.header-parti{
+  font-size:2em;
 }
 #curve_chart{
   height: 260px;
@@ -19,7 +34,7 @@
 }
 #map{
   height: 350px;
-  width: 587px;
+  width: 630px;
 }
 
 .chart{

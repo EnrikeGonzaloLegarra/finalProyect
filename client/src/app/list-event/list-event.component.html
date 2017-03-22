@@ -5,7 +5,7 @@
 
 
 
-<div class="col-md-9 col-sm-offset-3 cards" *ngFor='let event of events'>
+<div class="col-md-9 col-sm-offset-3 cards" *ngFor='let event of events; let i = index;'>
   <div class="card-container">
     <div class="card">
       <div class="front">
@@ -16,14 +16,14 @@
           <img class="img-circle" src="https://s1.wklcdn.com/image_31/950483/11946261/7312510.jpg" />
         </div>
         <div class="content">
-          <h4 class="text-center event-name">{{event.name}}</h4>
+          <h4 class="text-center event-name">{{event.eventName}}</h4>
         </div>
       </div>
       <!-- end
       <!-- end front panel -->
       <div class="back">
         <div class="header">
-          <h3 class="text-center"><a [routerLink]="['/home/event-info', event._id]">{{event.name}}</a></h3>
+          <h3 class="text-center"><a [routerLink]="['/home/event-info', event._id]">{{event.eventName}}</a></h3>
         </div>
         <div class="content">
           <div class="main">

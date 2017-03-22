@@ -1,13 +1,13 @@
-<div class="col-lg-3 col-md-3 hidden-sm hidden-xs profile">
+<div class="col-lg-4 col-md-3 hidden-sm hidden-xs profile">
     <div class="panel panel-default">
         <div class="panel-body" *ngIf= "user">
             <div class="media">
                 <div align="center">
-                    <img class="thumbnail img-responsive" src="http://www.bradanovic.cl/capone.gif" width="200px" height="200px">
+                    <img class="thumbnail img-responsive" src="http://www.ropa-ciclismo.com/blog/wp-content/uploads/2013/12/Marco-Pantani.jpg">
                 </div>
                 <div class="media-body" *ngIf="user.role==='USER'">
-                  
-                    <p><strong>{{user.name}}</strong></p>
+                    <h3>Hi <strong>{{user.name}}</strong></h3>
+
                     <p><strong>{{user.lastName}}</strong></p>
                     <p><strong>{{user.email}}</strong></p>
                     <p><strong>{{user.town}}</strong></p>
@@ -15,31 +15,35 @@
                     <br>
                     <hr>
                     <h5><strong>Events</strong></h5>
-                    <p><a [routerLink]="['/home/list-events']" class="btn btn-link" style="text-decoration:none;"><i class="fa fa-fw fa-picture-o" aria-hidden="true" ></i> Search Competion </a></p>
-                    <p><a href="#" class="btn btn-link" style="text-decoration:none;"><i class="fa fa-fw fa-picture-o" aria-hidden="true"></i> Competition Complete</a></p>
-                    <p><a href="#" class="btn btn-link" style="text-decoration:none;"><i class="fa fa-fw fa-picture-o" aria-hidden="true"></i> Inscribed Competition</a></p>
+                    <p><a [routerLink]="['/home/list-events']" class="btn btn-link" style="text-decoration:none;"><i class="fa fa-fw fa-picture-o" aria-hidden="true" ></i> Search </a></p>
+                    <p><a href="#" class="btn btn-link" style="text-decoration:none;"><i class="fa fa-fw fa-picture-o" aria-hidden="true"></i> Competition</a></p>
+                    <p><a href="#" class="btn btn-link" style="text-decoration:none;"><i class="fa fa-fw fa-picture-o" aria-hidden="true"></i> Inscribed</a></p>
                     <hr>
                     <h5><strong>Profile</strong></h5>
                     <p><a [routerLink]="['/home/edit-profile']">Edit Profile</a></p>
-                    <p><button (click)="logout()"> logout </button></p>
+                    <p><button class="btn-default btn btn-submit" (click)="logout()"> logout </button></p>
                 </div>
                 <div class="media-body" *ngIf="user.role==='ADMIN'">
-                    <h4><strong>Admin Info</strong></h4>
-                    <p>{{user.name}}</p>
+                    <h4>Hi {{user.name}} !</h4>
+
                     <p>{{user.lastName}}</p>
                     <p>{{user.email}}</p>
                     <p>{{user.town}}</p>
                     <p>{{user.club}}</p>
                     <br>
-                    <hr>
                     <h5><strong>Events</strong></h5>
-                    <p><a [routerLink]="['/home/create-event']" class="btn btn-link" style="text-decoration:none;"><i class="fa fa-fw fa-picture-o" aria-hidden="true" ></i> Create Event </a></p>
-                    <p><a [routerLink]="['/home/create-events']" class="btn btn-link" style="text-decoration:none;"><i class="fa fa-fw fa-picture-o" aria-hidden="true"></i> My events <span class="badge">42</span></a></p>
-                    <p><a href="#" class="btn btn-link" style="text-decoration:none;"><i class="fa fa-fw fa-picture-o" aria-hidden="true"></i> Delete Event <span class="badge">42</span></a></p>
+                    <br>
+                    <br>
+                    <p><a [routerLink]="['/home/create-event']" class="btn btn-link" style="text-decoration:none;"><i class="fa fa-fw" aria-hidden="true" ></i> Create Event </a></p>
+                    <p><a [routerLink]="['/home/create-events']" class="btn btn-link" style="text-decoration:none;"><i class="fa fa-fw " aria-hidden="true"></i> My events</a></p>
+                    <p><a href="#" class="btn btn-link" style="text-decoration:none;"><i class="fa fa-fw" aria-hidden="true"></i> Delete Event </a></p>
                     <hr>
                     <h5><strong>Profile</strong></h5>
+                    <br>
+                    <p>User type : {{user.role}}</p>
                     <p><a [routerLink]="['/home/edit-profile']">Edit Profile</a></p>
-                    <p><button (click)="logout()"> logout </button></p>
+
+                    <p><button class="btn-default btn btn-submit" (click)="logout()"> logout </button></p>
                 </div>
             </div>
         </div>

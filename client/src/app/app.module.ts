@@ -35,7 +35,6 @@ const routes: Routes = [
   { path: 'event-info/:id', component : EventInfoComponent},
   { path: 'home',  component: ProfileComponent,
         children: [
-          { path: 'dashboard', component: DashboardComponent },
           { path: 'edit-profile', component: EditProfileComponent},
           { path: 'list-events', component: ListEventComponent},
           { path: 'event-info/:id', component : EventInfoComponent},
